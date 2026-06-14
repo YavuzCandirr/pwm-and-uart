@@ -1,15 +1,15 @@
-# STM32 PWM ile LED Animasyonları ve Mod Kontrolü
+# STM32 PWM LED Animasyonları ve UART Haberleşme Altyapısı
 
-Bu proje, STM32 mikrodenetleyicilerinde donanımsal **PWM (Darbe Genişlik Modülasyonu)** ve **Durum Makinesi (State Machine)** mimarisi kullanılarak geliştirilmiş çoklu aydınlatma modlarına sahip bir gömülü sistem uygulamadır.
+Bu proje, STM32 mikrodenetleyicilerinde donanımsal **PWM (Darbe Genişlik Modülasyonu)** ve **Durum Makinesi (State Machine)** mimarisi kullanılarak geliştirilmiş çoklu aydınlatma modlarına sahip bir gömülü sistem uygulamasıdır. 
 
-Kullanıcı butonuna basılarak iki farklı animasyon modu arasında geçiş yapılabilir. İlk modda gerçeğe yakın bir "mum alevi" (titreme) efekti oluşturulurken, ikinci modda sabit bir flaşör mantığı çalışır.
+Sistem sadece donanımsal animasyonlar sunmakla kalmaz, aynı zamanda sistemin dış dünya ile haberleşmesi ve hata ayıklama (debugging) süreçleri için **UART (Seri Haberleşme)** altyapısını da hazır barındırır.
 
 ## 🌟 Öne Çıkan Mühendislik Yaklaşımları
 
 * **Donanımsal PWM Kontrolü:** LED'lerin sadece dijital (1/0) olarak açılıp kapanması yerine, TIM1 (Timer 1) kullanılarak parlaklık seviyeleri hassas bir şekilde kontrol edilmiştir.
 * **Durum Makinesi (State Machine):** Mum alevi animasyonu üç farklı faza (Fade-in, Flicker, Fade-out) bölünmüş ve sistemin her fazda donanımı farklı şekilde sürmesi sağlanmıştır.
 * **Rastgelelik (Randomization) ile Organik Efekt:** Standart C kütüphanesindeki `rand()` fonksiyonu PWM sinyaline entegre edilerek mekanik olmayan, organik ve öngörülemez bir titreme (flicker) efekti elde edilmiştir.
-* **Asenkron Mod Değişimi:** Kullanıcı butonunun (PA0) yükselen kenarı algılanıp, mod değiştiğinde önceki animasyondan kalan ışıkların (`__HAL_TIM_SET_COMPARE` ile sıfırlanarak) birbirine karışması önlenmiştir.
+* **UART ile Hata Ayıklama (Debug) Altyapısı:** Projeye `UART4` donanımı (9600 Baud, 8N1 standartlarında) entegre edilmiştir. Bu altyapı, ilerleyen aşamalarda anlık parlaklık değerlerini bilgisayara yazdırmak veya bilgisayardan komut alarak mod değiştirmek için tamamen hazırdır.
 
 ## ⚙️ Animasyon Modları ve Çalışma Mantığı
 
@@ -27,4 +27,10 @@ Kullanıcı butonuna basılarak iki farklı animasyon modu arasında geçiş yap
 * **PWM Çıkışı 1 (Mum Efekti):** `TIM1_CH1`
 * **PWM Çıkışı 2 (Flaşör Efekti):** `TIM1_CH2`
 * **Kullanıcı Butonu (Mod Değiştirici):** `PA0` (GPIO_Input)
+* **Seri Haberleşme:** `UART4` (9600 bps, 8 Data Bits, No Parity, 1 Stop Bit)
 
+## 🚀 Kurulum ve Kullanım
+
+1. Bu projeyi yerel bilgisayarınıza klonlayın:
+   ```bash
+   git clone [https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git](https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git)
