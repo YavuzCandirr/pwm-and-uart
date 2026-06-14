@@ -28,8 +28,3 @@ Kullanıcı butonuna basılarak iki farklı animasyon modu arasında geçiş yap
 * **PWM Çıkışı 2 (Flaşör Efekti):** `TIM1_CH2`
 * **Kullanıcı Butonu (Mod Değiştirici):** `PA0` (GPIO_Input)
 
-## 🚀 Kurulum ve Kullanım
-
-1. Bu projeyi yerel bilgisayarınıza klonlayın:
-   ```bash
-   git clone [https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git](https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git)
