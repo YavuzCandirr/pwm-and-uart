@@ -29,8 +29,3 @@ Sistem sadece donanımsal animasyonlar sunmakla kalmaz, aynı zamanda sistemin d
 * **Kullanıcı Butonu (Mod Değiştirici):** `PA0` (GPIO_Input)
 * **Seri Haberleşme:** `UART4` (9600 bps, 8 Data Bits, No Parity, 1 Stop Bit)
 
-## 🚀 Kurulum ve Kullanım
-
-1. Bu projeyi yerel bilgisayarınıza klonlayın:
-   ```bash
-   git clone [https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git](https://github.com/KULLANICI_ADINIZ/STM32-PWM-LED-Animation.git)
